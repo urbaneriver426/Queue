@@ -186,3 +186,30 @@ class LinkedList2:
 			self.head.prev, newNode.next = newNode, self.head
 			self.head = newNode
 			newNode.prev = None
+
+	def delete_head(self):
+		if self.head is not None:
+			if self.head is self.tail:
+				self.clean()
+			else:
+				self.head.next.prev = None
+				self.head = self.head.next
+
+	def delete_tail(self):
+		if self.tail is not None:
+			if self.head is self.tail:
+				self.clean()
+			else:
+				self.tail.prev.next = None
+				self.tail = self.tail.prev    
+
+l = LinkedList2()
+l.add_in_tail(Node(11))
+l.add_in_tail(Node(12))
+print(l.len())
+print("HEAD", l.head.value)
+print("TAIL", l.tail.value)
+l.delete_tail()
+print(l.len())
+print("HEAD", l.head.value)
+print("TAIL", l.tail.value)
